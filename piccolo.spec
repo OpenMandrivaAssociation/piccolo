@@ -36,7 +36,7 @@
 Summary:        Small fast XML parser
 Name:           piccolo
 Version:        1.04
-Release:        %mkrel 2.2.2
+Release:        %mkrel 2.2.3
 Epoch:          0
 License:        Apache Software License
 URL:            http://piccolo.sourceforge.net/
@@ -55,8 +55,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %if %{gcj_support}
 BuildRequires:          java-gcj-compat-devel
-Requires(post):         java-gcj-compat
-Requires(postun):       java-gcj-compat
 %endif
 
 %description
