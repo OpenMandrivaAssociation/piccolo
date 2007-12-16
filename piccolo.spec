@@ -36,14 +36,14 @@
 Summary:        Small fast XML parser
 Name:           piccolo
 Version:        1.04
-Release:        %mkrel 2.2.3
+Release:        %mkrel 2.2.4
 Epoch:          0
 License:        Apache Software License
 URL:            http://piccolo.sourceforge.net/
 Group:          Development/Java
 Source0:        piccolo-%{version}-src.zip
 Patch0:         piccolo-build_xml.patch
-BuildRequires:  jpackage-utils >= 0:1.5.32
+BuildRequires:  java-rpmbuild >= 0:1.5.32
 BuildRequires:  ant >= 0:1.6
 BuildRequires:  ant-junit
 BuildRequires:  junit
