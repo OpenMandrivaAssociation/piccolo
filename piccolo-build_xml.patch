@@ -1,0 +1,11 @@
+--- build.xml.orig	2007-03-12 16:09:08.000000000 -0400
++++ build.xml	2007-03-12 16:09:24.000000000 -0400
+@@ -112,7 +112,7 @@
+         <mkdir dir="${build.classes}"/>
+ 
+         <!-- Compile the java code from ${src} into ${build} -->
+-        <javac debug="yes" optimize="on" target="1.2" srcdir="${src}" destdir="${build.classes}"/>
++        <javac debug="yes" optimize="on" srcdir="${src}" destdir="${build.classes}"/>
+ 
+         <!-- Replace the version tag in the manifest -->
+         <filter token="VERSION" value="${version}"/>
