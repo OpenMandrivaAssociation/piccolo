@@ -36,7 +36,7 @@
 Summary:        Small fast XML parser
 Name:           piccolo
 Version:        1.04
-Release:        %mkrel 2.2.8
+Release:        %mkrel 2.2.7
 Epoch:          0
 License:        Apache Software License
 URL:            http://piccolo.sourceforge.net/
@@ -87,18 +87,18 @@ export CLASSPATH=
 ant -Dbuild.sysclasspath=first build javadoc
 
 %install
-rm -rf %{buildroot}
+rm -rf $RPM_BUILD_ROOT
 
 # jars
-mkdir -p %{buildroot}%{_javadir}
+mkdir -p $RPM_BUILD_ROOT%{_javadir}
 cp -p lib/Piccolo.jar \
-  %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
+  $RPM_BUILD_ROOT%{_javadir}/%{name}-%{version}.jar
+(cd $RPM_BUILD_ROOT%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
 
 # javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}
-cp -pr doc/javadoc/* %{buildroot}%{_javadocdir}/%{name}
-ln -s %{name}-%{version} %{buildroot}%{_javadocdir}/%{name}
+mkdir -p $RPM_BUILD_ROOT%{_javadocdir}/%{name}
+cp -pr doc/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}
+ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{name}
 
 
 %if %{gcj_support}
@@ -106,7 +106,7 @@ ln -s %{name}-%{version} %{buildroot}%{_javadocdir}/%{name}
 %endif
 
 %clean
-rm -rf %{buildroot}
+rm -rf $RPM_BUILD_ROOT
 
 %if %{gcj_support}
 %post
@@ -132,3 +132,63 @@ rm -rf %{buildroot}
 %doc %{_javadocdir}/*
 
 # -----------------------------------------------------------------------------
+
+
+%changelog
+* Fri Dec 03 2010 Oden Eriksson <oeriksson@mandriva.com> 0:1.04-2.2.7mdv2011.0
++ Revision: 607172
+- rebuild
+
+* Wed Mar 17 2010 Oden Eriksson <oeriksson@mandriva.com> 0:1.04-2.2.6mdv2010.1
++ Revision: 523661
+- rebuilt for 2010.1
+
+* Sat Mar 07 2009 Antoine Ginies <aginies@mandriva.com> 0:1.04-2.2.5mdv2009.1
++ Revision: 351652
+- rebuild
+
+* Wed Jan 02 2008 Olivier Blin <oblin@mandriva.com> 0:1.04-2.2.4mdv2009.0
++ Revision: 140731
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Sun Dec 16 2007 Anssi Hannula <anssi@mandriva.org> 0:1.04-2.2.4mdv2008.1
++ Revision: 121000
+- buildrequire java-rpmbuild, i.e. build with icedtea on x86(_64)
+
+* Sat Sep 15 2007 Anssi Hannula <anssi@mandriva.org> 0:1.04-2.2.3mdv2008.0
++ Revision: 87280
+- rebuild to filter out autorequires of GCJ AOT objects
+- remove unnecessary Requires(post) on java-gcj-compat
+
+* Tue Jul 10 2007 David Walluck <walluck@mandriva.org> 0:1.04-2.2.2mdv2008.0
++ Revision: 50827
+- remove XML classes
+
+* Thu Jul 05 2007 David Walluck <walluck@mandriva.org> 0:1.04-2.2.1mdv2008.0
++ Revision: 48691
+- fix BuildRoot
+- Import piccolo
+
+
+
+* Mon Mar 12 2007 Matt Wringe <mwringe@redhat.com> - 0:1.04-2jpp.2
+- Add piccolo-build_xml.patch to allow building on newer jvms.
+
+* Tue Feb 13 2007 Permaine Cheung <pcheung@redhat.com> - 0:1.04-2jpp.1%%{?dist}
+- Fixed release tag, buildroot, license and other rpmlint issues.
+
+* Thu Jan 05 2006 Fernando Nasser <fnasser@redhat.com> - 0:1.04-2jpp
+- First JPP 1.7 build
+
+* Wed Aug 25 2004 Fernando Nasser <fnasser@redhat.com> - 0:1.04-1jpp
+- Update ro 1.04
+- Rebuilt with Ant 1.6.2
+
+* Tue Jun 01 2004 Randy Watler <rwatler at finali.com> - 0:1.03-2jpp
+- Upgrade to Ant 1.6.X
+
+* Tue Feb 24 2004 Ralph Apel <r.apel at r-apel.de> - 0:1.03-1jpp
+- First JPackage release
