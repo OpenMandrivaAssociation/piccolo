@@ -36,7 +36,7 @@
 Summary:	Small fast XML parser
 Name:		piccolo
 Version:	1.04
-Release:	2.2.11
+Release:	2.2.12
 License:	Apache Software License
 Group:		Development/Java
 Url:		http://piccolo.sourceforge.net/
